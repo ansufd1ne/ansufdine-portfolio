@@ -1,0 +1,109 @@
+/* =========================
+   NAVBAR 
+   ========================= */
+
+   .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+  
+    /* “bg-transparent” au départ */
+    background: transparent;
+  
+    /* transition-all duration-300 */
+    transition: var(--transition-smooth);
+  }
+  
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+  
+  .navbar__brand {
+    font-size: 20px;
+    font-weight: 800;
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    border: 0;
+  }
+  
+  .navbar__link {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    color: hsl(var(--foreground) / 0.80);
+    transition: var(--transition-smooth);
+    text-align: left;
+  }
+  
+  .navbar__link:hover {
+    color: hsl(var(--primary));
+  }
+  
+  /* Desktop links (hidden md:flex) : simple version responsive */
+  .navbar__links--desktop {
+    display: none;
+    gap: 24px;
+  }
+  
+  /* Burger button (md:hidden) */
+  .navbar__burger {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 20px;
+    color: hsl(var(--foreground));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Menu mobile */
+  .navbar__mobile {
+    padding: 0 16px 16px 16px;
+  }
+  
+  .navbar__mobileInner {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 10px;
+  
+    /* petite anim d’apparition */
+    animation: fade-in 0.25s ease-out;
+  }
+  
+  /* Icônes menu/close : on switch selon l'état */
+  .icon--close { display: none; }
+  .navbar.mobile-open .icon--menu { display: none; }
+  .navbar.mobile-open .icon--close { display: inline; }
+  
+  /* Glass + shadow (tu as déjà .glass dans ton index.css Tailwind : on le réutilise) */
+  .shadow-md {
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Responsive: à partir de 768px => desktop links visibles, burger caché */
+  @media (min-width: 768px) {
+    .navbar__links--desktop { display: flex; }
+    .navbar__burger { display: none; }
+    .navbar__mobile { display: none; }
+  }
+  
+  /* Keyframe utilisé plus haut */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
