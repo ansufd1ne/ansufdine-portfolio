@@ -14,6 +14,15 @@
 
   <!-- CSS principal (tu vas y mettre l'équivalent de index.css + app.css adapté) -->
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components/about.css">
+  <link rel="stylesheet" href="/css/components/contact.css">
+  <link rel="stylesheet" href="/css/components/footer.css">
+  <link rel="stylesheet" href="/css/components/hero.css">
+  <link rel="stylesheet" href="/css/components/navbar.css">
+  <link rel="stylesheet" href="/css/components/projects.css">
+  <link rel="stylesheet" href="/css/components/skills.css">
+  <link rel="stylesheet" href="/css/components/timeline.css">
+  
 
   <!-- JS principal (scroll smooth, active link, etc.) -->
   <script defer src="/js/main.js"></script>

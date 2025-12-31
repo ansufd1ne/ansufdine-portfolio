@@ -1,0 +1,185 @@
+/* -----------------------------
+   6) HERO (convertit Hero.tsx)
+   ----------------------------- */
+   .hero {
+    min-height: 100vh;
+    padding-top: 90px; /* laisse la place à la navbar */
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0.05;
+    pointer-events: none;
+  }
+  
+  .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 38px;
+    align-items: center;
+    padding: 34px 0;
+  }
+  
+  .hero-kicker {
+    margin: 0 0 10px;
+    color: hsl(var(--primary));
+    font-weight: 700;
+  }
+  
+  .hero-title {
+    margin: 0 0 14px;
+    font-size: clamp(34px, 5vw, 60px);
+    line-height: 1.05;
+    font-weight: 800;
+  }
+  
+  .hero-subtitle {
+    margin: 0 0 16px;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 800;
+  }
+  
+  .hero-desc {
+    margin: 0 0 26px;
+    color: hsl(var(--muted-foreground));
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 620px;
+  }
+  
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 14px;
+    padding: 14px 18px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-primary {
+    color: white;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-glow);
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-primary:hover { opacity: 0.92; }
+  
+  .btn-outline {
+    color: hsl(var(--primary));
+    border: 2px solid hsl(var(--primary));
+  }
+  
+  .btn-outline:hover {
+    background: hsl(var(--primary));
+    color: white;
+  }
+  
+  .hero-image-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero-glow {
+    position: absolute;
+    inset: -20px;
+    background: var(--gradient-accent);
+    opacity: 0.20;
+    filter: blur(60px);
+    border-radius: 999px;
+  }
+  
+  .hero-image {
+    position: relative;
+    width: min(420px, 100%);
+    border-radius: 22px;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* Desktop layout: 2 colonnes */
+  @media (min-width: 1024px) {
+    .hero-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+    }
+    .hero-actions {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+  }
+  
+  /* Indicateur scroll */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.9;
+  }
+  
+  .scroll-pill {
+    width: 26px;
+    height: 42px;
+    border: 2px solid hsl(var(--primary));
+    border-radius: 999px;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .scroll-dot {
+    width: 6px;
+    height: 12px;
+    background: hsl(var(--primary));
+    border-radius: 999px;
+    animation: bounce 1.3s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+  
+  /* -----------------------------
+     7) BOUTON CV STICKY (CVButton.tsx)
+     ----------------------------- */
+  .cv-sticky {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 40;
+    padding: 14px 16px;
+    border-radius: 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: 900;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .cv-sticky:hover { transform: scale(1.03); }
+  
+  @media (max-width: 767px) {
+    /* comme React: hidden md:block */
+    .cv-sticky { display: none; }
+  }
