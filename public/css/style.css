@@ -1,0 +1,288 @@
+/* ==========================================================================
+   STYLE PRINCIPAL 
+   Objectif : rendre le CSS compréhensible, modifiable, et indépendant de Tailwind.
+   ========================================================================== */
+
+/* ==========================================================================
+   1) DESIGN TOKENS (Variables CSS) - équivalent de :root dans index.css
+   Tout est en HSL comme ton design system l’exige.
+   ========================================================================== */
+
+   :root {
+    /* Couleurs globales */
+    --background: 0 0% 100%;
+    --foreground: 210 24% 16%;
+  
+    --card: 0 0% 100%;
+    --card-foreground: 210 24% 16%;
+  
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 24% 16%;
+  
+    --primary: 204 87% 51%;
+    --primary-foreground: 0 0% 100%;
+  
+    --secondary: 186 69% 51%;
+    --secondary-foreground: 0 0% 100%;
+  
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 12% 45%;
+  
+    --accent: 204 87% 51%;
+    --accent-foreground: 0 0% 100%;
+  
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+  
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 204 87% 51%;
+  
+    /* Arrondis (équivalent de --radius et tailwind borderRadius) */
+    --radius: 0.75rem;
+  
+    /* Couleurs custom (ta charte) */
+    --navy: 210 70% 13%;
+    --blue-light: 199 95% 61%;
+    --turquoise: 186 69% 51%;
+  
+    /* Dégradés (utilisés via classes utilitaires) */
+    --gradient-primary: linear-gradient(135deg, hsl(210 70% 13%), hsl(204 87% 51%));
+    --gradient-accent: linear-gradient(135deg, hsl(204 87% 51%), hsl(186 69% 51%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 20% 98%));
+  
+    /* Ombres */
+    --shadow-sm: 0 2px 4px hsl(210 70% 13% / 0.05);
+    --shadow-md: 0 4px 12px hsl(210 70% 13% / 0.08);
+    --shadow-lg: 0 10px 30px hsl(210 70% 13% / 0.12);
+    --shadow-glow: 0 0 40px hsl(204 87% 51% / 0.15);
+  
+    /* Effet glass (verre) */
+    --glass-bg: hsl(0 0% 100% / 0.7);
+    --glass-border: hsl(210 20% 90% / 0.5);
+  
+    /* Transition standard (pour hover, focus, etc.) */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* ==========================================================================
+     2) MODE SOMBRE
+     Astuce : tu actives le dark mode en ajoutant class="dark" sur <html> ou <body>.
+     ========================================================================== */
+  
+  .dark {
+    --background: 210 70% 13%;
+    --foreground: 0 0% 98%;
+  
+    --card: 210 60% 16%;
+    --card-foreground: 0 0% 98%;
+  
+    --popover: 210 60% 16%;
+    --popover-foreground: 0 0% 98%;
+  
+    --primary: 204 87% 51%;
+    --primary-foreground: 0 0% 100%;
+  
+    --secondary: 186 69% 51%;
+    --secondary-foreground: 0 0% 100%;
+  
+    --muted: 210 50% 20%;
+    --muted-foreground: 210 15% 70%;
+  
+    --accent: 204 87% 51%;
+    --accent-foreground: 0 0% 100%;
+  
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+  
+    --border: 210 50% 20%;
+    --input: 210 50% 20%;
+    --ring: 204 87% 51%;
+  
+    --gradient-primary: linear-gradient(135deg, hsl(210 70% 13%), hsl(204 87% 51%));
+    --gradient-accent: linear-gradient(135deg, hsl(204 87% 51%), hsl(186 69% 51%));
+    --gradient-subtle: linear-gradient(180deg, hsl(210 70% 13%), hsl(210 60% 16%));
+  
+    --shadow-sm: 0 2px 4px hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.4);
+    --shadow-lg: 0 10px 30px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 40px hsl(204 87% 51% / 0.25);
+  
+    --glass-bg: hsl(210 60% 16% / 0.7);
+    --glass-border: hsl(210 50% 20% / 0.5);
+  }
+  
+  /* ==========================================================================
+     3) BASE / RESET (remplace @tailwind base + @apply)
+     ========================================================================== */
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    margin: 0;
+  
+    /* Remplace: @apply bg-background text-foreground font-sans */
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  
+  /* Liens */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* Images */
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  
+  /* ==========================================================================
+     4) CONTAINER (conversion de tailwind theme.container)
+     Tailwind disait : center:true, padding:2rem, screens:2xl=1400px
+     ========================================================================== */
+  
+  .container {
+    width: 100%;
+    max-width: 1400px;   /* équivalent "2xl": "1400px" */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;  /* padding: "2rem" */
+    padding-right: 2rem;
+  }
+  
+  /* ==========================================================================
+     5) UTILITAIRES (conversion de @layer utilities)
+     ========================================================================== */
+  
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .text-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .shadow-elegant {
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Arrondis “tailwind-like” si tu veux t’y retrouver vite */
+  .rounded-sm { border-radius: calc(var(--radius) - 4px); }
+  .rounded-md { border-radius: calc(var(--radius) - 2px); }
+  .rounded-lg { border-radius: var(--radius); }
+  
+  /* ==========================================================================
+     6) ANIMATIONS (conversion de tailwind.config.ts -> keyframes + classes)
+     ========================================================================== */
+  
+  /* fade-in */
+  @keyframes fade-in {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .anim-fade-in {
+    animation: fade-in 0.6s ease-out both;
+  }
+  
+  /* fade-in-up */
+  @keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .anim-fade-in-up {
+    animation: fade-in-up 0.8s ease-out both;
+  }
+  
+  /* scale-in */
+  @keyframes scale-in {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .anim-scale-in {
+    animation: scale-in 0.5s ease-out both;
+  }
+  
+  /* slide-in-right */
+  @keyframes slide-in-right {
+    0% { opacity: 0; transform: translateX(30px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  .anim-slide-in-right {
+    animation: slide-in-right 0.6s ease-out both;
+  }
+  
+  /* glow */
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(204 87% 51% / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(204 87% 51% / 0.5); }
+  }
+  .anim-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+  
+  /* ==========================================================================
+     7) MINI COMPOSANTS (pour te simplifier la vie)
+     Tu peux les utiliser dans tes sections PHP.
+     ========================================================================== */
+  
+  /* Bouton générique */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.2rem;
+    border-radius: 0.9rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    transition: var(--transition-smooth);
+  }
+  
+  .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* Bouton principal */
+  .btn-primary {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+  }
+  
+  /* Carte */
+  .card {
+    background: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border: 1px solid hsl(var(--border));
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow-md);
+  }
