@@ -1,0 +1,143 @@
+/* =========================
+   SECTION TIMELINE
+   ========================= */
+
+   .timeline-section {
+    padding: 100px 0;
+    background: hsl(var(--muted) / 0.3);
+  }
+  
+  .timeline-title {
+    text-align: center;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  
+  .timeline-subtitle {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px;
+    color: hsl(var(--muted-foreground));
+  }
+  
+  /* Wrapper */
+  .timeline-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Ligne centrale */
+  .timeline-line {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .timeline-line {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--gradient-accent);
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Item */
+  .timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+  }
+  
+  /* Desktop alternance */
+  @media (min-width: 768px) {
+    .timeline-item.left {
+      text-align: right;
+      padding-right: 60px;
+    }
+  
+    .timeline-item.right {
+      margin-left: auto;
+      padding-left: 60px;
+    }
+  
+    .timeline-item.left,
+    .timeline-item.right {
+      width: 50%;
+    }
+  }
+  
+  /* Carte */
+  .timeline-card {
+    padding: 24px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .timeline-card:hover {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Header */
+  .timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .timeline-icon {
+    font-size: 22px;
+  }
+  
+  .timeline-icon.primary   { color: hsl(var(--primary)); }
+  .timeline-icon.secondary { color: hsl(var(--secondary)); }
+  .timeline-icon.accent    { color: hsl(var(--accent)); }
+  
+  .timeline-year {
+    font-weight: 800;
+    color: hsl(var(--primary));
+  }
+  
+  /* Textes */
+  .timeline-title-card {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  
+  .timeline-subtitle-card {
+    font-size: 14px;
+    font-weight: 600;
+    color: hsl(var(--primary));
+    margin-bottom: 8px;
+  }
+  
+  .timeline-description {
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
+  }
+  
+  /* Point central */
+  .timeline-dot {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .timeline-dot {
+      display: block;
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      background: hsl(var(--primary));
+      border: 4px solid hsl(var(--background));
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: var(--shadow-glow);
+    }
+  }
