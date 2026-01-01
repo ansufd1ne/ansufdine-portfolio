@@ -1,0 +1,111 @@
+/* =========================
+   SECTION ABOUT
+   ========================= */
+
+   .about-section {
+    padding: 100px 0;
+  }
+  
+  .about-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .about-title {
+    text-align: center;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    margin-bottom: 48px;
+  }
+  
+  /* Bloc texte */
+  .about-text {
+    padding: 40px;
+    border-radius: 20px;
+  }
+  
+  .about-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+    color: hsl(var(--foreground));
+  }
+  
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Mots mis en avant */
+  .highlight {
+    color: hsl(var(--primary));
+    font-weight: 700;
+  }
+  
+  /* Citation */
+  .about-quote-wrapper {
+    position: relative;
+    margin-top: 48px;
+  }
+  
+  .quote-icon {
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    font-size: 64px;
+    font-weight: 900;
+    color: hsl(var(--primary) / 0.2);
+  }
+  
+  .about-quote {
+    padding: 40px;
+    padding-left: 56px;
+    border-left: 4px solid hsl(var(--primary));
+    border-radius: 20px;
+    font-style: italic;
+    font-size: 18px;
+  }
+  
+  .about-quote footer {
+    margin-top: 16px;
+    font-size: 14px;
+    color: hsl(var(--muted-foreground));
+    font-style: normal;
+  }
+  
+  /* Cartes infos */
+  .about-cards {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .about-card {
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .about-card:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+  }
+  
+  .about-card-value {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  
+  .about-card-label {
+    font-size: 14px;
+    color: hsl(var(--muted-foreground));
+  }
+  
+  /* Responsive */
+  @media (min-width: 768px) {
+    .about-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
