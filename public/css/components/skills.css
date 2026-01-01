@@ -1,0 +1,111 @@
+/* =========================
+   SECTION SKILLS
+   ========================= */
+
+   .skills-section {
+    padding: 100px 0;
+    background: hsl(var(--muted) / 0.3);
+  }
+  
+  .skills-title {
+    text-align: center;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  
+  .skills-subtitle {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 60px;
+    color: hsl(var(--muted-foreground));
+    font-size: 16px;
+  }
+  
+  /* Grille principale */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  /* Carte catégorie */
+  .skills-card {
+    padding: 32px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .skills-card:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-6px);
+  }
+  
+  /* Header catégorie */
+  .skills-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  
+  .skills-card-header h3 {
+    font-size: 22px;
+    font-weight: 800;
+  }
+  
+  /* Icône */
+  .skills-icon {
+    font-size: 32px;
+  }
+  
+  .skills-icon.primary   { color: hsl(var(--primary)); }
+  .skills-icon.secondary { color: hsl(var(--secondary)); }
+  .skills-icon.accent    { color: hsl(var(--accent)); }
+  
+  /* Liste des skills */
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  /* Ligne skill */
+  .skill-item {}
+  
+  /* Nom + % */
+  .skill-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .skill-percent {
+    color: hsl(var(--muted-foreground));
+  }
+  
+  /* Barre */
+  .skill-bar {
+    height: 8px;
+    background: hsl(var(--muted));
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  
+  .skill-bar-fill {
+    height: 100%;
+    background: var(--gradient-accent);
+    border-radius: 999px;
+    transition: width 1s ease-out;
+  }
+  
+  /* Responsive */
+  @media (min-width: 768px) {
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
